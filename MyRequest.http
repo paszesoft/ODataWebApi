@@ -1,0 +1,107 @@
+### Should redirect to /odata/Products
+GET http://localhost:5198/
+### 
+GET http://localhost:5198/odata/Products
+###
+GET http://localhost:5198/odata/Categories
+###
+GET http://localhost:5198/odata/Orders
+###
+GET http://localhost:5198/odata/Products?$filter=Price%20gt%20500
+###
+GET http://localhost:5198/odata/Products?$orderby=Name%20desc
+###
+GET http://localhost:5198/odata/Products?$select=Name,Price
+###
+GET http://localhost:5198/odata/Products?$top=2
+###
+GET http://localhost:5198/odata/Products?$expand=Category
+###
+GET http://localhost:5198/odata/Orders?$expand=Product
+###
+GET http://localhost:5198/odata/Orders?$expand=Product($expand=Category)
+###
+
+### POST Category
+POST http://localhost:5198/odata/Categories
+Content-Type: application/json
+
+{
+  "Id": 3,
+  "Name": "Accessory"
+}
+
+###
+
+### PUT Category
+PUT http://localhost:5198/odata/Categories/3
+Content-Type: application/json
+
+{
+  "Id": 3,
+  "Name": "Accessories"
+}
+
+###
+
+### DELETE Category
+DELETE http://localhost:5198/odata/Categories/3
+###
+
+### POST Product
+POST http://localhost:5198/odata/Products
+Content-Type: application/json
+
+{
+  "Id": 4,
+  "Name": "Lamp",
+  "Price": 12,
+  "CategoryId": 1
+}
+
+###
+
+### PUT Product
+PUT http://localhost:5198/odata/Products/4
+Content-Type: application/json
+
+{
+  "Id": 4,
+  "Name": "Desk Lamp",
+  "Price": 15,
+  "CategoryId": 3
+}
+
+###
+
+### DELETE Product
+DELETE http://localhost:5198/odata/Products/4
+###
+
+### POST Order
+POST http://localhost:5198/odata/Orders
+Content-Type: application/json
+
+{
+  "Id": 3,
+  "ProductId": 4,
+  "Date": "2025-08-17T00:00:00Z"
+}
+
+###
+
+### PUT Order
+PUT http://localhost:5198/odata/Orders/3
+Content-Type: application/json
+
+{
+  "Id": 3,
+  "ProductId": 4,
+  "Date": "2025-08-18T00:00:00Z"
+}
+
+###
+
+### DELETE Order
+DELETE http://localhost:5198/odata/Orders/3
+###
